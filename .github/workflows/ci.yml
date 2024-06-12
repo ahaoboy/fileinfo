@@ -1,0 +1,29 @@
+name: CI
+
+permissions:
+  contents: write
+
+on:
+  pull_request:
+  push:
+    tags:
+      - '**[0-9]+.[0-9]+.[0-9]+*'
+jobs:
+  ci:
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        version: [12, 14, 16]
+        include:
+          - os: windows-latest
+            version: 17
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: "test"
+        run: |
+          cargo -V
+          rustc -V
+          cargo test
