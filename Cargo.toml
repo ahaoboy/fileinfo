@@ -1,0 +1,11 @@
+[package]
+name = "fileinfo"
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/ahaoboy/fileinfo"
+homepage = "https://github.com/ahaoboy/fileinfo"
+authors = ["ahaoboy"]
+license = "MIT"
+description = "parse file info from ls/ftp command"
+
+[dependencies]
